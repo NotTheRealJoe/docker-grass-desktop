@@ -1,0 +1,12 @@
+# Example config for running the container. Change VNC_PASSWORD, GRASS_USERNAME, and GRASS_PASSWORD. See README.md
+# for details on how to set them appropriately.
+services:
+  grass:
+    image: docker.io/nottherealjoe/grass-desktop
+    environment:
+      VNC_PASSWORD: mypasswd
+      GRASS_USERNAME: "getgrassusername@example.com"
+      GRASS_PASSWORD: supersecret
+    ports:
+      - 5900:5900/tcp
+    restart: unless-stopped

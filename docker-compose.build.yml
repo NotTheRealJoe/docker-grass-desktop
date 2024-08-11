@@ -1,0 +1,9 @@
+# This config is for building the image. If you want to just run a container, see "docker-compose.run.example.yml".
+# If you are going to build your own version of the image, change "image" to a image URI that you have permission
+# to write to.
+services:
+  grass-desktop:
+    image: docker.io/nottherealjoe/grass-desktop:grass4.26.5
+    build:
+      context: .
+      dockerfile: Dockerfile
