@@ -43,6 +43,9 @@ services:
 - Set `GRASS_USERNAME` and `GRASS_PASSWORD` to your credentials created on getgrass.io. If you don't have a username and password yet, [use my referral link to sign up](https://app.getgrass.io/register/?referralCode=sqKqTw8JHScyGFY).
 - The port forward shown above will allow you to access the internal VNC server on the host's port 5900. Change the port as needed. You may omit it completely if you don't want to access the VNC server. Access isn't required and would only be used for troubleshooting.
 
+## Source Repo
+[https://github.com/NotTheRealJoe/docker-grass-desktop](https://github.com/NotTheRealJoe/docker-grass-desktop) contains the code used to build the images in this repository.
+
 ## Notices
 The creator of this project is not affiliated with Grass or its owners. The Grass and getgrass.io names are used here only to indicate technical compatibility, and should not be considered to be any kind of endorsement or approval of this project by Grass.
 
