@@ -2,7 +2,7 @@ FROM docker.io/ubuntu:latest AS grass-desktop-package-builder
 
 RUN apt-get -y update; apt-get -y --no-install-recommends --no-install-suggests install binutils wget ca-certificates
 
-RUN wget -q -O /tmp/grass.deb https://files.getgrass.io/file/grass-extension-upgrades/ubuntu-latest/grass_4.26.6_amd64.deb
+RUN wget -q -O /tmp/grass.deb https://files.getgrass.io/file/grass-extension-upgrades/ubuntu-latest/grass_4.27.1_amd64.deb
 
 RUN mkdir /tmp/grass-fix
 WORKDIR /tmp/grass-fix
