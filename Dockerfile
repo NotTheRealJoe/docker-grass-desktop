@@ -1,8 +1,8 @@
-FROM docker.io/ubuntu:latest AS grass-desktop-package-builder
+FROM docker.io/ubuntu:22.04 AS grass-desktop-package-builder
 
 RUN apt-get -y update; apt-get -y --no-install-recommends --no-install-suggests install binutils wget ca-certificates
 
-RUN wget -q -O /tmp/grass.deb https://files.getgrass.io/file/grass-extension-upgrades/ubuntu-22.04/grass_4.30.0_amd64.deb
+RUN wget -q -O /tmp/grass.deb https://files.getgrass.io/file/grass-extension-upgrades/ubuntu-22.04/Grass_5.1.0_amd64.deb
 
 RUN mkdir /tmp/grass-fix
 WORKDIR /tmp/grass-fix
@@ -17,7 +17,7 @@ RUN ar r ../grass.deb *
 WORKDIR /
 RUN rm -r /tmp/grass-fix
 
-FROM docker.io/ubuntu:latest
+FROM docker.io/ubuntu:22.04
 
 RUN apt-get -y update; apt-get -y --no-install-recommends --no-install-suggests install \
     wget tini gpg openbox ca-certificates xdotool
@@ -34,11 +34,10 @@ COPY --from=grass-desktop-package-builder /tmp/grass.deb /tmp/grass.deb
 RUN dpkg -i /tmp/grass.deb; apt-get -y --fix-broken --no-install-recommends --no-install-suggests install
 RUN rm /tmp/grass.deb
 
-RUN apt-get -y install adduser
-RUN adduser grass
+RUN useradd grass
 
 # Remove packages only needed for the build
-RUN apt-get -y --purge purge wget gpg adduser
+RUN apt-get -y purge wget gpg
 RUN apt-get -y --purge autoremove
 
 USER grass:grass
